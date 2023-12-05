@@ -14,7 +14,7 @@ fun main() {
         .split("|")
 
     fun parseInput1(input: List<String>): Int {
-        return input.parallelStream()
+        return input
             .map {
                 val sides = splitSides(it)
                 val leftSide = sides[0].toIntSet()
@@ -25,7 +25,7 @@ fun main() {
                 else
                     2f.pow(inter.size - 1).roundToInt()
             }
-            .reduce(Int::plus).get()
+            .reduce(Int::plus)
     }
 
     fun part1(input: List<String>): Int {
@@ -33,7 +33,7 @@ fun main() {
     }
 
     fun parseInput2(input: List<String>): Int {
-        val winList = input.stream()
+        val winList = input
             .map {
                 val sides = splitSides(it)
                 val leftSide = sides[0].toIntSet()
@@ -41,7 +41,6 @@ fun main() {
                 val inter = leftSide intersect rightSide
                 inter.size
             }
-            .collect(Collectors.toList())
         val cardAmountList = List(winList.size) { 1 }.toMutableList()
         winList.forEachIndexed { index, wins ->
             for (i in index until index + wins) {
