@@ -44,8 +44,9 @@ fun main() {
             if (s.contains('=')) {
                 val split = s.split('=')
                 val lens = Lens(split[0], split[1].toInt())
-                if (hashMap[lens.hashCode].contains(lens)) {
-                    hashMap[lens.hashCode][hashMap[lens.hashCode].indexOf(lens)].focalLength = lens.focalLength
+                val indexOfLens = hashMap[lens.hashCode].indexOf(lens)
+                if (indexOfLens != -1) {
+                    hashMap[lens.hashCode][indexOfLens].focalLength = lens.focalLength
                 } else {
                     hashMap[lens.hashCode].add(lens)
                 }
